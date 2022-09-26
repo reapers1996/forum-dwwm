@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include 'includes/head.php'; ?>
+<?php include 'includes/navbar.php';?>
 <body>
     <br><br>
     <form class="container" method="POST">

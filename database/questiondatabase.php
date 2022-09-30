@@ -52,6 +52,28 @@ public static function getAnswers($id):ArrayObject
             die('Une erreur PDO a été trouvée : ' . $e->getMessage());
         }
     }
+    public static function liste():ArrayObject
+    {
+        try
+        {
+            $bdd = connectionDB();
+            $readAnswers = $bdd->prepare('SELECT * FROM questions');
+            $readAnswers->execute();
+            $data= $readAnswers->fetchAll();
+            $liste = new ArrayObject();
+            foreach($data as $element)
+            {
+                $auteur = UsersDatabase::read($element['id_auteur']);
+                $question = new Questions($element['id'],$element['titre'],$element['description'],$auteur,$element['contenu']);
+                $liste->append($question);
+            }
+            
+            return $liste;
+        }
+        catch(PDOException $e){
+            die('Une erreur PDO a été trouvée : ' . $e->getMessage());
+        }
+    }
 // modifier une question avec tb
 // effacer une question avec tb
 }

@@ -7,5 +7,16 @@ require_once './database/database.php';
     {
         //index.php?page=accueil
         AccueilControleur::index();
+        die();
     }
-    switch ()
+    switch ($_GET['page'])
+    {
+        case 'profil': ProfilControleur::afficher($_GET['id']);
+        break;
+        case 'login': UserControleur::login();
+        break;
+        case 'signup': UserControleur::signup();
+        break;
+        default:  AccueilControleur::index();
+    }
+    

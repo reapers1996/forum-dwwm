@@ -1,5 +1,5 @@
 <?php
-class profilControleur
+class ProfilControleur
 {
     public static function afficher($id)
     {

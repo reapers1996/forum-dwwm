@@ -16,7 +16,7 @@
           <a class="nav-link" href="my-questions.php">Mes questions</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="login.php">Connexion</a>
+          <a class="nav-link" href="index.php?page=login">Connexion</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="https://fr-fr.facebook.com/CopainduMonde13/"><img src="includes/logocopaindumonde.png" width="60px" height="60px"></a>

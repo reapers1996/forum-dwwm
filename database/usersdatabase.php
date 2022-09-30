@@ -34,7 +34,7 @@ public static function read($id):Users
     }
 }
 
-public static function chargerAvecPseudo($pseudo):Users
+public static function chargerAvecPseudo($pseudo)
 {
     try
     {
@@ -42,14 +42,18 @@ public static function chargerAvecPseudo($pseudo):Users
         $readAnswer = $bdd->prepare('SELECT * FROM users where pseudo=:pseudo');
         $readAnswer->execute(['pseudo'=>$pseudo]);
         $data= $readAnswer->fetch();
-        $user = new Users($data['id'],$data['pseudo'],$data['nom'],$data['prenom'],$data['mdp']);
-        return $user;
+        if ($data)
+            {
+                $user = new Users($data['id'],$data['pseudo'],$data['nom'],$data['prenom'],$data['mdp']);
+            return $user;
+            }
+        return false;
     }
     catch(PDOException $e){
         die('Une erreur PDO a été trouvée : ' . $e->getMessage());
     }
 }
-public function connexion($pseudo,$motdepasse)
+public static function connexion($pseudo,$motdepasse)
 {
     $user = UsersDatabase::chargerAvecPseudo($pseudo);
     if ($user)

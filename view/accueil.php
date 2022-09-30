@@ -36,7 +36,7 @@
                         <?= $question->getDescription(); ?>
                     </div>
                     <div class="card-footer">
-                        Publié par <a href="profile.php?id=<?= $question->getIdAuteur(); ?>"><?= $question->getAuteur()->getPseudo(); ?></a>; ?>
+                        Publié par <a href="index.php?page=profil&id=<?= $question->getAuteur()->getId(); ?>"><?= $question->getAuteur()->getPseudo(); ?></a>; 
                     </div>
                 </div>
                 <br>

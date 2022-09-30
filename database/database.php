@@ -1,4 +1,8 @@
 <?php
+require_once 'answersdatabase.php';
+
+require_once 'questiondatabase.php';
+require_once 'usersdatabase.php';
 function connectionDB()
 {
     try{

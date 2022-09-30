@@ -8,3 +8,4 @@ require_once './database/database.php';
         //index.php?page=accueil
         AccueilControleur::index();
     }
+    switch ()

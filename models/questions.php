@@ -5,14 +5,14 @@ class Questions{
     private string $titre;
     private string $description;
     private string $contenu;
-    private int $id_auteur;
+    private Users $auteur;
 
-    public function __construct($id,$titre,$description,$contenu,$id_auteur){
+    public function __construct($id,$titre,$description,$contenu,$auteur){
         $this->id=$id;
         $this->titre=$titre;
         $this->description=$description;
         $this->contenu=$contenu;
-        $this->id_auteur=$id_auteur;
+        $this->auteur=$auteur;
     }
 
     public function getId()
@@ -32,8 +32,8 @@ class Questions{
         return $this->contenu;
     
     }
-    public function getIdAuteur()
+    public function getAuteur()
     {
-        return $this->id_auteur;
+        return $this->auteur;
     }
 }

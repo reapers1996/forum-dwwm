@@ -1,7 +1,7 @@
 <?php
- 
+ // créer sa classe question
 class QuestionsDatabase{
-// create
+    //pouvoir créer une question
 public static function create($question)
     {
         try
@@ -14,7 +14,7 @@ public static function create($question)
             die('Une erreur PDO a été trouvée : ' . $e->getMessage());
         }
     }
-// read une question
+// créer la fonction pour lire une question
 public static function read($id):Questions
     {
         try
@@ -52,6 +52,7 @@ public static function getAnswers($id):ArrayObject
             die('Une erreur PDO a été trouvée : ' . $e->getMessage());
         }
     }
+    //créer une fonction pour créer une liste de questions
     public static function liste():ArrayObject
     {
         try
@@ -74,6 +75,7 @@ public static function getAnswers($id):ArrayObject
             die('Une erreur PDO a été trouvée : ' . $e->getMessage());
         }
     }
+    //fonction pour afficher la liste des question de l'utilisateur
     public static function listeQuestionsUtilisateur($id):ArrayObject
     {
         try

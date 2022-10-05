@@ -1,6 +1,7 @@
 <?php
-
+// créer la classe de réponses
 class AnswersDatabase{
+    //pouvoir créer une réponse
     public static function create($answers)
     {
         try
@@ -14,6 +15,7 @@ class AnswersDatabase{
             die('Une erreur PDO a été trouvée : ' . $e->getMessage());
         }
     }
+    //créer la fonction pour lire les réponses
     public static function read($id):Answers
     {
         try
@@ -29,7 +31,7 @@ class AnswersDatabase{
             die('Une erreur PDO a été trouvée : ' . $e->getMessage());
         }
     }
-    // a faire le update
+    //fonction pour voir toute les réponses a une question
     public static function getAnswers($idQuestion):ArrayObject
     {
         try

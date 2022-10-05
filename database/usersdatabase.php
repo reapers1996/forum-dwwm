@@ -1,7 +1,7 @@
 <?php
-
+//créer la classe user
 class UsersDatabase{
-// creater user
+// créer l'user
 public static function create($user)
 {
     try
@@ -17,7 +17,7 @@ public static function create($user)
         die('Une erreur PDO a été trouvée : ' . $e->getMessage());
     }
 }
-// read user
+// voir le profil de l'user
 public static function read($id):Users
 {
     try
@@ -33,7 +33,7 @@ public static function read($id):Users
         die('Une erreur PDO a été trouvée : ' . $e->getMessage());
     }
 }
-
+// la connexion pour vérifier le pseudo
 public static function chargerAvecPseudo($pseudo)
 {
     try
@@ -53,6 +53,7 @@ public static function chargerAvecPseudo($pseudo)
         die('Une erreur PDO a été trouvée : ' . $e->getMessage());
     }
 }
+//la connexion pour vérifier le mot de passe
 public static function connexion($pseudo,$motdepasse)
 {
     $user = UsersDatabase::chargerAvecPseudo($pseudo);

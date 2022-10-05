@@ -3,6 +3,7 @@ require_once 'answersdatabase.php';
 
 require_once 'questiondatabase.php';
 require_once 'usersdatabase.php';
+//commande pour se connecter a la base de donnée 
 function connectionDB()
 {
     try{

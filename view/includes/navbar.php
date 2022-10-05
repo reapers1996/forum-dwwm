@@ -12,7 +12,6 @@
         <li class="nav-item">
           <a class="nav-link" href="publish-question.php">Publier une question</a>
         </li>
-        
         <li class="nav-item">
           <a class="nav-link" href="index.php?page=login">Connexion</a>
         </li>

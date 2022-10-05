@@ -20,7 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `forum`
 --
-
+DROP DATABASE forum;
+CREATE DATABASE forum;
+use forum;
 -- --------------------------------------------------------
 
 --

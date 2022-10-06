@@ -11,7 +11,7 @@
                 ?>
                 <div class="card">
                     <div class="card-header">
-                        <a href="article.php?id=<?= $question->getId(); ?>">
+                        <a href="index.php?page=modifierquestion&id=<?= $question->getId(); ?>">
                             <?= $question->getTitre(); ?>
                         </a>
                     </div>

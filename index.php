@@ -15,9 +15,17 @@ require_once './database/database.php';
         break;
         case 'login': UserControleur::login();
         break;
+        case 'logout': UserControleur::logout();
+        break;
+        case 'publierquestion': QuestionControleur::publierquestion();
+        break;
+        case 'modifierquestion' : QuestionControleur::modifierquestion($_GET['id']);
+        break;
         case 'signup': UserControleur::signup();
         break;
-        case 'mesquestions': UserControleur::signup();
+        case 'unequestion': QuestionControleur::lireunequestion($_GET['id']);
+        break;
+        case 'mesquestions': QuestionControleur::mesquestion($_GET['id']);
         break;
         default:  AccueilControleur::index();
     }

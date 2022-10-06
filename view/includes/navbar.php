@@ -9,29 +9,36 @@
         <li class="nav-item">
           <a class="nav-link" href="index.php">Accueil Forum</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="publish-question.php">Publier une question</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="index.php?page=login">Connexion</a>
-        </li>
+       
+        
         <li class="nav-item">
           <a class="nav-link" href="https://fr-fr.facebook.com/CopainduMonde13/"><img src="view/includes/logocopaindumonde.png" width="100px" height="60px"></a>
         </li>
         <?php 
           if(isset($_SESSION['auth'])){
             ?>
+             <li class="nav-item">
+          <a class="nav-link" href="index.php?page=publierquestion">Publier une question</a>
+        </li>
             <li class="nav-item">
               <a class="nav-link" href="index.php?page=profil&id=<?= $_SESSION['id']; ?>">Mon profil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.php?page=mesquestions">Mes questions</a>
+              <a class="nav-link" href="index.php?page=mesquestions&id=<?= $_SESSION['id']; ?>">Mes questions</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="actions/users/logoutAction.php">Déconnexion</a>
+              <a class="nav-link" href="index.php?page=logout">Déconnexion</a>
             </li>
             <?php
           }
+          else
+          {?>
+            <li class="nav-item">
+              <a class="nav-link" href="index.php?page=login">Connexion</a>
+            </li>
+          <?php
+          }
+          
         ?>
       </ul>
     </div>

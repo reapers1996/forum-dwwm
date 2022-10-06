@@ -2,8 +2,8 @@
 //créer le model réponses
 class Answers{
     private int $id;
-    private int $auteur;
-    private int $question;
+    private Users $auteur;
+    private Questions $question;
     private string $contenu;
 //créer le constructeur 
     public function __construct($id,$auteur,$question,$contenu){

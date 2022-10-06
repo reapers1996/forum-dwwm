@@ -9,7 +9,7 @@ class AnswersDatabase{
             $bdd =connectionDB();
             $insertAnswer = $bdd->prepare('INSERT INTO answers(id_auteur, id_question, contenu)VALUES(:id_auteur,
              :id_question, :contenu)');
-            $insertAnswer->execute(['id_auteur'=>$answers->getIdAuteur(),'id_question'=>$answers->getIdQuestion(),'contenu'=>$answers->getContenu()]);
+            $insertAnswer->execute(['id_auteur'=>$answers->getAuteur()->getId(),'id_question'=>$answers->getQuestion()->getId(),'contenu'=>$answers->getContenu()]);
         }
         catch(PDOException $e){
             die('Une erreur PDO a été trouvée : ' . $e->getMessage());
@@ -24,7 +24,9 @@ class AnswersDatabase{
             $readAnswer = $bdd->prepare('SELECT * FROM answers where id=:id');
             $readAnswer->execute(['id'=>$id]);
             $data= $readAnswer->fetch();
-            $answer = new Answers($data['id'],$data['id_auteur'],$data['id_question'],$data['contenu']);
+            $auteur = UsersDatabase::read($data['id_auteur']);
+            $question = QuestionsDatabase::read($data['id_question']);
+            $answer = new Answers($data['id'],$auteur,$question,$data['contenu']);
             return $answer;
         }
         catch(PDOException $e){
@@ -43,7 +45,9 @@ class AnswersDatabase{
             $liste = new ArrayObject();
             foreach($data as $element)
             {
-                $answer = new Answers($element['id'],$element['id_auteur'],$element['id_question'],$element['contenu']);
+                $auteur = UsersDatabase::read($element['id_auteur']);
+                $question = QuestionsDatabase::read($element['id_question']);
+                $answer = new Answers($element['id'],$auteur,$question,$element['contenu']);
                 $liste->append($answer);
             }
             

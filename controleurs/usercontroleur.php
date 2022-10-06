@@ -50,14 +50,23 @@ if(isset($_POST['validate'])&&!empty($_POST['pseudo']) AND !empty($_POST['passwo
          UsersDatabase::create($user);
          
          header('Location: index.php?page=login');
-        }
+        } 
+        // si pas de formulaire posté, l'afficher
         else
         require_once './view/signup.php';
 
        
 
-        // si pas de formulaire posté, l'afficher
+       
 
     }
-    // se connecter
+    // se deconnecter
+    public static function logout()
+    {
+        session_start();
+        $_SESSION = [];
+        session_destroy();
+        header('Location: index.php?page=login');
+    }
+
 }

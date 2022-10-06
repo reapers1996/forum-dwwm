@@ -7,8 +7,9 @@ public static function create($question)
         try
         {
             $bdd =connectionDB();
-            $insertQuestion = $bdd->prepare('INSERT INTO question(titre,description,contenu,id_auteur)VALUES(:titre,:description,:contenu,:id_auteur)');
-            $insertQuestion->execute(['titre'=>$question->getTitre(),'description'=>$question->getQuestion(),'contenu'=>$question->getContenu(),'id_auteur'=>$question->getIdAuteur(),]);
+            $insertQuestion = $bdd->prepare('INSERT INTO questions(titre,description,contenu,id_auteur)VALUES(:titre,:description,:contenu,:id_auteur)');
+            $insertQuestion->execute(['titre'=>$question->getTitre(),'description'=>$question->getDescription(),'contenu'=>$question->getContenu(),'id_auteur'=>$question->getAuteur()->getId()]);
+    
         }
         catch(PDOException $e){
             die('Une erreur PDO a été trouvée : ' . $e->getMessage());
@@ -23,7 +24,8 @@ public static function read($id):Questions
             $readQuestion = $bdd->prepare('SELECT * FROM questions where id=:id');
             $readQuestion->execute(['id'=>$id]);
             $data= $readQuestion->fetch();
-            $question = new Questions($data['id'],$data['titre'],$data['description'],$data['contenu'],$data['id_auteur']);
+            $auteur = UsersDatabase::read($data['id_auteur']);
+            $question = new Questions($data['id'],$data['titre'],$data['description'],$data['contenu'],$auteur);
             return $question;
         }
         catch(PDOException $e){
@@ -42,7 +44,9 @@ public static function getAnswers($id):ArrayObject
             $liste = new ArrayObject();
             foreach($data as $element)
             {
-                $answer = new Answers($element['id'],$element['id_auteur'],$element['id_question'],$element['contenu']);
+                $auteur = UsersDatabase::read($element['id_auteur']);
+                $question = QuestionsDatabase::read($element['id_question']);
+                $answer = new Answers($element['id'],$auteur,$question,$element['contenu']);
                 $liste->append($answer);
             }
             
@@ -99,5 +103,24 @@ public static function getAnswers($id):ArrayObject
         }
     }
 // modifier une question avec tb
+public static function modifier($question)
+    {
+        try
+        {
+            $bdd =connectionDB();
+            $updateQuestion = $bdd->prepare("UPDATE questions SET titre = :titre, 
+            description = :description, contenu = :contenu WHERE questions.id = :id;");
+
+            $updateQuestion->execute(['titre'=>$question->getTitre(),
+                                    'description'=>$question->getDescription(),
+                             'contenu'=>$question->getContenu(),
+                             'id'=>$question->getId()]);
+                             var_dump($updateQuestion);
+  
+        }
+        catch(PDOException $e){
+            die('Une erreur PDO a été trouvée : ' . $e->getMessage());
+        }
+    }
 // effacer une question avec tb
 }

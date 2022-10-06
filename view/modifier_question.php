@@ -29,7 +29,8 @@
             <textarea type="text" class="form-control" name="content"><?= $question->getcontenu()?></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary" name="validate">modifier la question</button>
+        <button type="submit" class="btn btn-warning" name="validate">modifier la question</button>
+        <button type="delete" class="btn btn-danger" name="delete">supprimer la question</button>
    </form>
 </body>
 </html>

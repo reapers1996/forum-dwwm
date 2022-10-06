@@ -56,31 +56,6 @@ class QuestionControleur
              else
              require_once './view/publier_question.php';
      }
-/*
-     public static function repondre()
-     {
-        // tester si le formulaire a été posté en POST
-   
-        if(!isset($_POST['validate'])){
-            //creation d'une réponse avec le post
-            $question = QuestionsDatabase::read($_POST['id']);
-            $auteur = UsersDatabase::read($_GET['id']);
-            $contenu= htmlspecialchars($_POST['content']);
-            $reponse = new Answers(0,$auteur,$question,$contenu);
-            AnswersDatabase::create($reponse);
-           require_once './view/unequestion.php';
-         
-           } 
-           // si pas de formulaire posté, l'afficher
-           else
-           {
-
-
-
-            
-           header('Location: index.php?page=unequestion&id='.$_SESSION['id']);
-           }
-     }*/
 
      public static function lireunequestion($idQuestion)
      {
@@ -95,12 +70,12 @@ class QuestionControleur
            {
             $question = QuestionsDatabase::read($idQuestion);
             $auteur = UsersDatabase::read($_GET['id']);
-// traiter le $ Post
+    // traiter le $ Post
              $contenu= htmlspecialchars($_POST['contenu']);
             $reponse = new Answers(0,$auteur,$question,$contenu);
-     
+     // créer une nouvelle ranswer 
             AnswersDatabase::create($reponse);
-// créer une nouvelle ranswer 
+
             header('Location: index.php?page=unequestion&id='.$idQuestion);
            }
      }

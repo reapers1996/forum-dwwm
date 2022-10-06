@@ -17,6 +17,8 @@ require_once './database/database.php';
         break;
         case 'signup': UserControleur::signup();
         break;
+        case 'mesquestions': UserControleur::signup();
+        break;
         default:  AccueilControleur::index();
     }
     

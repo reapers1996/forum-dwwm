@@ -102,7 +102,7 @@ public static function getAnswers($id):ArrayObject
             die('Une erreur PDO a été trouvée : ' . $e->getMessage());
         }
     }
-// modifier une question avec tb
+// modifier une question 
 public static function modifier($question)
     {
         try
@@ -122,5 +122,21 @@ public static function modifier($question)
             die('Une erreur PDO a été trouvée : ' . $e->getMessage());
         }
     }
-// effacer une question avec tb
+// effacer une question
+public static function delete($id)
+{
+    try
+    {
+        AnswersDatabase::deleteanwers($id);
+        $bdd = connectionDB();
+        $readQuestion = $bdd->prepare('DELETE FROM questions where id=:id');
+        $readQuestion->execute(['id'=>$id]);
+        $data= $readQuestion->fetch();
+        var_dump($readQuestion);
+        return true;
+    }
+    catch(PDOException $e){
+        die('Une erreur PDO a été trouvée : ' . $e->getMessage());
+    }
+}
 }

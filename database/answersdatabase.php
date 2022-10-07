@@ -57,5 +57,21 @@ class AnswersDatabase{
             die('Une erreur PDO a été trouvée : ' . $e->getMessage());
         }
     }
+    public static function deleteanwers($idquestion)
+{
+    try
+    {
+        $bdd = connectionDB();
+        $readQuestion = $bdd->prepare('DELETE FROM answers where id_question=:id_question');
+        $readQuestion->execute(['id_question'=>$idquestion]);
+        $data= $readQuestion->fetch();
+        var_dump($readQuestion);
+        var_dump($idquestion);
+        return true;
+    }
+    catch(PDOException $e){
+        die('Une erreur PDO a été trouvée : ' . $e->getMessage());
+    }
+}
 
     }

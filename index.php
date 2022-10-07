@@ -23,6 +23,8 @@ require_once './database/database.php';
         break;
         case 'signup': UserControleur::signup();
         break;
+        case 'deletequestion': QuestionControleur::supprimer($_GET['id']);
+        break;
         case 'unequestion': QuestionControleur::lireunequestion($_GET['id']);
         break;
         case 'mesquestions': QuestionControleur::mesquestion($_GET['id']);

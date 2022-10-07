@@ -30,7 +30,7 @@
         </div>
 
         <button type="submit" class="btn btn-warning" name="validate">modifier la question</button>
-        <button type="delete" class="btn btn-danger" name="delete">supprimer la question</button>
+        <a href="index.php?page=deletequestion&id=<?=$question->getId()?>"><button type="button" class="btn btn-danger" name="delete">supprimer la question</button></a>
    </form>
 </body>
 </html>

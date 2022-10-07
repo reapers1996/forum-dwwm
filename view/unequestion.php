@@ -47,7 +47,6 @@
                                 <div class="card-body">
                                     <?= $answer->getContenu(); ?>
                                 </div>
-                                <button type="delete" class="btn btn-danger" name="delete">supprimer la réponse</button>
                             </div>
                             <br>
                             <?php

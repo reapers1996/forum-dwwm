@@ -69,14 +69,23 @@ class QuestionControleur
            else
            {
             $question = QuestionsDatabase::read($idQuestion);
-            $auteur = UsersDatabase::read($_GET['id']);
+            $auteur = $question->getAuteur();
     // traiter le $ Post
              $contenu= htmlspecialchars($_POST['contenu']);
-            $reponse = new Answers(0,$auteur,$question,$contenu);
+
+            $reponse = new Answers(0, $auteur,$question,$contenu);
      // créer une nouvelle ranswer 
             AnswersDatabase::create($reponse);
 
             header('Location: index.php?page=unequestion&id='.$idQuestion);
            }
+     }
+
+     //suprimer une question
+     public static function supprimer($idQuestion)
+     {
+        QuestionsDatabase::delete($idQuestion);
+        //lister les questions
+        header('Location: index.php?page=mesquestions&id='.$_SESSION['id']);
      }
 }

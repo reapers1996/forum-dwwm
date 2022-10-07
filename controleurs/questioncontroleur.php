@@ -41,6 +41,11 @@ class QuestionControleur
              // tester si le formulaire a été posté en POST
    
              if(isset($_POST['validate'])){
+                // tests de garde
+                if (strlen($_POST['title']<5)||(strlen($_POST['title']>255)))
+                return false;
+
+
               //creation d'une question avec le post
               $question_titre = htmlspecialchars($_POST['title']);
               $question_description = htmlspecialchars($_POST['description']);
@@ -49,8 +54,7 @@ class QuestionControleur
  
               $question = new Questions(0,$question_titre,$question_description,$question_contenu,$question_auteur);
               QuestionsDatabase::create($question);
-              
-             header('Location: index.php?page=mesquestions&id='.$_SESSION['id']);
+            header('Location: index.php?page=mesquestions&id='.$_SESSION['id']);
              } 
              // si pas de formulaire posté, l'afficher
              else
